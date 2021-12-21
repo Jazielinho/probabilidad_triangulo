@@ -1,11 +1,4 @@
 
-
-es_valido = function(a, b, c){
-  # Determina si los lados de un triángulo son válidos.
-  return(a + b > c && a + c > b && b + c > a)
-}
-
-
 romper_palillo = function(longitud){
   # Divide un palillo en 3 partes
   x = runif(n = 1, min = 0, max = longitud)
@@ -19,6 +12,12 @@ romper_palillo = function(longitud){
 }
 
 
+es_triangulo = function(a, b, c){
+  # Determina si los lados de un triángulo son válidos.
+  return(a + b > c & a + c > b & b + c > a)
+}
+
+
 simula_probabilidad = function(longitud = 1.0, num_iter = 1000){
   # Simula la probabilidad de que un palillo se rompa en 3 partes
   num_triangulos_formados = 0
@@ -28,7 +27,7 @@ simula_probabilidad = function(longitud = 1.0, num_iter = 1000){
     b = lados$b
     c = lados$c
 
-    if (es_valido(a, b, c)){
+    if (es_triangulo(a, b, c)){
       num_triangulos_formados = num_triangulos_formados + 1
     }
   }
